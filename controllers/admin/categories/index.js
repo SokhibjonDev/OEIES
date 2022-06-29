@@ -23,7 +23,7 @@ module.exports = {
             img: req.body.img
         })
 
-        category.save()
+        await category.save()
 
         res.redirect('/api/category')
     },

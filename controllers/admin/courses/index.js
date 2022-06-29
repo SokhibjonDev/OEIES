@@ -35,6 +35,37 @@ module.exports = {
             layout: '../admin/layouts/main',
 
         })
+    },
+
+
+    delById: async (req, res) => {
+        const courses = await Course.findByIdAndDelete(req.params.id)
+        res.redirect('/api/courses')
+    },
+
+    UpdateById: async (req, res) => {
+        const {
+            name,
+            price,
+            img
+        } = req.body
+
+        const courses = await Course.findByIdAndUpdate(req.params.id, {
+            name,
+            price,
+            img
+        })
+
+        res.redirect('/api/courses')
+    },
+
+    getUpdate: async (req, res) => {
+        const courses = await Course.findById(req.params.id)
+        res.render('admin/updateCourses', {
+            courses,
+            title: 'Update course',
+            layout: '../admin/layouts/main'
+        })
     }
 }
 
