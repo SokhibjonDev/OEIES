@@ -2,6 +2,7 @@ const { Router } = require('express')
 const router = Router()
 const admin = require('../../controllers/admin/home/index.js')
 const category = require('./category')
+const courses = require('./course')
 
 // Admin home page 
 router.get('/', admin.home)
@@ -10,7 +11,7 @@ router.get('/', admin.home)
 router.use('/category', category)
 
 // Courses
-// router.use('/course', course)
+router.use('/courses', courses)
 
 
 module.exports = router

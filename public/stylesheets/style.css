@@ -12379,3 +12379,51 @@ form button p {
   margin-left: 400px;
   opacity: 0;
 }
+
+.course{
+  background: #2c2c2c;
+  width: 250px;
+  border-radius: 25px;
+  padding: 0 0 5px;
+  margin-left: 60px;
+}
+.course h3, p{
+  color: #fff;
+  margin-left: 10px;
+}
+.course img{
+  background: #fff;
+  filter: saturate(1);/* 0 */
+  transition: .3s;
+  border-radius: 25px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+/* .course img:hover{
+  filter: saturate(1);
+} */
+.courses{
+  width: 1600px;
+  display: flex;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+.acha:hover{
+  color: #fff;
+}
+.ud{
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.ud a{
+  color: #fff;
+  text-decoration: none;
+  margin-right: 23px;
+  margin-bottom: 10px;
+}
+.ud .img{
+  border-radius: none;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
