@@ -14,7 +14,7 @@ const hbs = create({
 })
 
 // MongoDB connect
-require('./helper/db')('mongodb://localhost:27017/online-edu')
+require('./helper/db')('mongodb://localhost:27017/')
 
 // HBS connect
 app.engine('hbs', hbs.engine);

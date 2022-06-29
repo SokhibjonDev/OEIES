@@ -33,7 +33,7 @@ module.exports = {
         res.render('admin/addCourse', {
             title: 'Add course',
             layout: '../admin/layouts/main',
-            
+
         })
     }
 }
