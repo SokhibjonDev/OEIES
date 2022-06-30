@@ -12513,3 +12513,8 @@ th {
 a{
     color: #fff;
 }
+.categories
+{
+  display: flex;
+  justify-content: space-around;
+}

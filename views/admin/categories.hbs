@@ -1,14 +1,13 @@
 {{#if categories.length}}
-{{#each categories}}
-<div class="category">
-    <h3>{{name}}</h3>
-    <img src="{{img}}" alt="{{img}}">
+<div class="categories">
+    {{#each categories}}
+    <div class="category">
+        <h3 style="color: #fff;">{{name}}</h3>
+        <img src="{{img}}" alt="{{img}}">
 
-    <a class="title"
-                style="text-decoration: none;  margin-left: 400px; font-size: 30px; font-weight: 300; !important"
-                href="/api/category/add">Add new category</a>
+    </div>
+    {{/each}}
 </div>
-{{/each}}
 {{else}}
 <div data-aos="fade-up">
     <div class="empty" style="display: flex; align-items: center; margin-left: 250px;margin-top: 250px;">
