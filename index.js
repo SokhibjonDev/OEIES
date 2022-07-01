@@ -3,11 +3,15 @@ const app = express()
 const { create } = require('express-handlebars')
 const path = require('path')
 const morgan = require('morgan')
+const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 require('dotenv').config()
 const adminAuth = require('./routes/admin/auth')
 const adminRouter = require('./routes/admin/admin')
 
+const authMiddleware = require('./middleware/auth')
+const userMiddleware = require('./middleware/user')
 const hbs = create({
     extname: 'hbs',
     runtimeOptions: {
@@ -18,11 +22,21 @@ const hbs = create({
 
 // MongoDB connect
 require('./helper/db')()
+const store = new MongoDBStore({
+    uri: 'mongodb+srv://Sohibjon:android106@cluster0.g2p1q.mongodb.net/online-edu',
+    collection: 'mySession'
+})
 
 // HBS connect
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(session({
+    secret: 'some secret key',
+    resave: false,
+    saveUninitialized: false,
+    store
+}))
 
 // Middleware
 app.use(express.json())
@@ -33,8 +47,9 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('tiny'))
 }
 // Routing
+app.use(userMiddleware)
 app.use('/api/', adminAuth)
-app.use('/api/', adminRouter)
+app.use('/api/', authMiddleware, adminRouter)
 
 const port = normalizePort(process.env.port || '5000')
 app.set('port', port)

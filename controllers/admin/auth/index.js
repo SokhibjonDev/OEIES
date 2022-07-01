@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const Admin = require("../../../models/admin");
+const bcrypt = require('bcrypt')
 
 module.exports = {
   async getLogin(req, res) {
@@ -8,43 +9,70 @@ module.exports = {
       layout: "../admin/layouts/auth",
     });
   },
+
   async login(req, res) {
     try {
-        if (!req.body) {
-            res.send("Login required");
-          }
-          const admin = await Admin.findOne({ username: req.body.username });
-          if (!admin) {
-            res.send("Username is incorrect");
-            return;
-          }
-          if (admin.password !== req.body.password) {
-            res.send("Password is incorrect");
-            return;
-          }
-          res.redirect('/api')
+      if (!req.body) {
+        res.send("Login required");
+        // res.redirect('/api/login')
+      }
+
+      const admin = await Admin.findOne({ username: req.body.username });
+
+      if (!admin) {
+        res.send("Username is incorrect");
+        return;
+      }
+
+      const areSame = await bcrypt.compare(req.body.password, admin.password);
+
+      if (!areSame) {
+        res.send("Password is incorrect");
+        return;
+      }
+
+      req.session.authen = true;
+      req.session.admin = admin;
+      req.session.save((err) => {
+        if (err) throw err;
+        res.redirect("/api");
+      });
     } catch (error) {
-        console.log(error);
-        res.redirect('/api/login')
+      console.log(error);
+      res.redirect("/api/login");
     }
   },
+
   async getRegister(req, res) {
     res.render("admin/register", {
       title: "Register",
       layout: "../admin/layouts/auth",
     });
   },
+
   async register(req, res) {
     const error = loginValidation(req.body);
 
-    if (!!error) {
+    if (!!!error) {
+      console.log(error);
       res.redirect("/api/register");
       return;
     }
 
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
+
+    req.body.password = hashPassword;
+
     const admin = new Admin(req.body);
     await admin.save();
     res.redirect("/api/login");
+  },
+
+  async logout(req, res) {
+    await req.session.destroy((err) => {
+      if (err) throw err;
+      res.redirect("/api/login");
+    });
   },
 };
 
@@ -59,7 +87,5 @@ function loginValidation(val) {
 
   const result = schema.validate(val);
 
-  result.error;
-
-  return;
+  return result.error;
 }
