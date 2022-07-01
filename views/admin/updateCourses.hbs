@@ -1,6 +1,26 @@
 <form action="/api/courses/update/{{courses.id}}" method="post">
-<input type="text" name="name" value="{{courses.name}}">
-<input type="number" name="price" value="{{courses.price}}">
-<input type="text" name="img" value="{{courses.img}}">
-<button type="submit">Send</button>
+    <br>
+    <h1 style="text-align: center; color: #fff; text-transform: uppercase; letter-spacing: 2px;">{{courses.name}}</h1>
+    <input type="text" name="name" value="{{courses.name}}">
+    <br>
+    <input type="number" name="price" value="{{courses.price}}">
+    <br>
+    <input type="text" name="img" value="{{courses.img}}">
+    <br><br>
+    <button type="submit" style="color: #fff; padding: 15px;">Update</button>
+    <br><br>
 </form>
+
+<style>
+    form {
+        background: rgba(255, 255, 255, .01);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 0 15px .1px #ccc;
+        margin-top: 100px;
+    }
+
+    button {
+        border-radius: 25px;
+    }
+</style>

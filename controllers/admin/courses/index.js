@@ -2,7 +2,7 @@ const Joi = require('joi')
 const Course = require('../../../models/courses')
 
 module.exports = {
-    home: async (req, res) => {
+    async homeCourse(req, res) {
         const courses = await Course.find()
         res.render('admin/courses', {
             title: 'Courses page',
@@ -11,7 +11,7 @@ module.exports = {
         })
     },
 
-    add: async (req, res) => {
+    async addCourse(req, res) {
         const error = validateCourse(req.body)
 
         if (!!error) {
@@ -29,7 +29,7 @@ module.exports = {
         res.redirect('/api/courses')
     },
 
-    getAddCourse: async (req, res) => {
+    async getAddCourse(req, res) {
         res.render('admin/addCourse', {
             title: 'Add course',
             layout: '../admin/layouts/main',
@@ -38,12 +38,12 @@ module.exports = {
     },
 
 
-    delById: async (req, res) => {
+    async delByIdCourse(req, res) {
         const courses = await Course.findByIdAndDelete(req.params.id)
         res.redirect('/api/courses')
     },
 
-    UpdateById: async (req, res) => {
+    async UpdateByIdCourse(req, res) {
         const {
             name,
             price,
@@ -59,7 +59,7 @@ module.exports = {
         res.redirect('/api/courses')
     },
 
-    getUpdate: async (req, res) => {
+    async getUpdateCourse(req, res) {
         const courses = await Course.findById(req.params.id)
         res.render('admin/updateCourses', {
             courses,

@@ -2,14 +2,14 @@
 const User = require('../../../models/users')
 
 module.exports = {
-    home: async (req, res) => {
-        const users = await User.find()
-        res.render('admin/users', {
-            title: 'Users page',
-            layout: '../admin/layouts/main',
-            users
-        })
-    },
+    async homeUser(req, res) {
+    const users = await User.find()
+    res.render('admin/users', {
+        title: 'Users page',
+        layout: '../admin/layouts/main',
+        users
+    })
+},
 
     // add: async (req, res) => {
     //     const error = validateCourse(req.body)
@@ -33,7 +33,7 @@ module.exports = {
     //     res.render('admin/addCourse', {
     //         title: 'Add course',
     //         layout: '../admin/layouts/main',
-            
+
     //     })
     // }
 }

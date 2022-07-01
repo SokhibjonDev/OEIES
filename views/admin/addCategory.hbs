@@ -1,7 +1,41 @@
 <form action="/api/category/add" method="post">
+        <br>
         <h3 class="create">Create new category</h3>
+        <br>
         <input type="text" id="name" name="name" placeholder="Category name">
+        <br>
         <input type="text" id="img" name="img" placeholder="Category img">
+        <br><br>
 
-        <button type="submit"><p>Create</p></button>
+        <button class="btn" type="submit">Create</button>
+        <br><br><br>
 </form>
+
+<style>
+        form {
+                background: rgba(255, 255, 255, .01);
+                padding: 50px;
+                border-radius: 25px;
+                box-shadow: 0 0 15px .1px #ccc;
+                margin-top: 100px;
+        }
+
+        input::placeholder {
+                color: #ccc;
+        }
+
+        .btn {
+                background: transparent;
+                border: 2px solid #ccc;
+                color: #fff;
+                border-radius: 25px;
+                width: 400px !important;
+                margin: auto;
+                padding: 10px 0;
+                font-size: 20px;
+        }
+
+        .btn:hover {
+                color: #fff;
+        }
+</style>
