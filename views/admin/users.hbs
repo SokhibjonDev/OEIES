@@ -1,63 +1,57 @@
-    <div class="form">
-        <form style="display: flex; align-items: center;" action="/search">
-            <input type="text" class="inp" placeholder="Search" name="search" required>
-            <button class="search" type="submit"><img style="width: 16px;" src="/images/search-interface-symbol.png" alt=""></button>
-        </form>
-    </div>
-    <table>
+<table style="    width: 99.9%;">
 
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Name/Surname</th>
-                <th>Score</th>
-                <th>Number</th>
-                <th>Group</th>
-                <th>Month</th>
-                <th>Edit</th>
-            </tr>
-        </thead>
-
-        {{#if people.length}}
-        {{#each people}}
-
-
+    <thead>
         <tr>
-            <td class="top">1</td>
-            <td>{{name}} {{surname}}</td>
-            <td>{{score}}</td>
-            <td>{{number}}</td>
-            <td>{{group}}</td>
-            <td>{{month}}</td>
-            <td style="display: flex; align-items: center; justify-content: center;" class="btn"><a
-                    href="/people/{{id}}" class="edit">Edit</a></td>
+            <th>No</th>
+            <th>Name/Surname</th>
+            <th>Score</th>
+            <th>Number</th>
+            <th>Group</th>
+            <th>Month</th>
+            <th>Edit</th>
         </tr>
+    </thead>
 
-        {{/each}}
-        {{else}}
-        <h2 class="mpt">Empty</h2>
-        {{/if}}
-    </table>
+    {{#if people.length}}
+    {{#each people}}
 
-    <nav class="nav">
+
+    <tr>
+        <td class="top">1</td>
+        <td>{{name}} {{surname}}</td>
+        <td>{{score}}</td>
+        <td>{{number}}</td>
+        <td>{{group}}</td>
+        <td>{{month}}</td>
+        <td style="display: flex; align-items: center; justify-content: center;" class="btn"><a href="/people/{{id}}"
+                class="edit">Edit</a></td>
+    </tr>
+
+    {{/each}}
+    {{else}}
+    <h2 class="mpt">Empty <img src="/images/empty-box.png" alt=""></h2>
+    {{/if}}
+</table>
+
+<nav class="nav">
     <div class="container">
         <div class="row" style="display: flex;">
             <div class="menu">
                 <ul>
-                    <li class="menu_items"><a style="text-decoration: none;"  href="/">All</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/1">1</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/2">2</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/3">3</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/4">4</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/5">5</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/6">6</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/7">7</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/8">8</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/8">9</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/8">10</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/8">11</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/peoples/8">12</a></li>
-                    <li class="menu_item"><a  style="text-decoration: none;" href="/people/add">+</a></li>
+                    <li class="menu_items"><a style="text-decoration: none;" href="/">All</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/1">1</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/2">2</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/3">3</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/4">4</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/5">5</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/6">6</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/7">7</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/8">8</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/8">9</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/8">10</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/8">11</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/peoples/8">12</a></li>
+                    <li class="menu_item"><a style="text-decoration: none;" href="/people/add">+</a></li>
                 </ul>
             </div>
         </div>
