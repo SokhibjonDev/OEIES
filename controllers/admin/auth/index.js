@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const Admin = require("../../../models/admin");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
+const upload = require("../../../middleware/Upload");
 
 module.exports = {
   async getLogin(req, res) {
@@ -59,13 +60,23 @@ module.exports = {
       return;
     }
 
-    const hashPassword = await bcrypt.hash(req.body.password, 10);
+    if (req.file) {
+      const hashPassword = await bcrypt.hash(req.body.password, 10);
 
-    req.body.password = hashPassword;
-
-    const admin = new Admin(req.body);
-    await admin.save();
-    res.redirect("/api/login");
+      req.body.password = hashPassword;
+      const { username, name, surname, password } = req.body;
+      const admin = new Admin({
+        username,
+        name,
+        surname,
+        password,
+        adminImg: '/images/' + req.file.filename,
+      });
+      await admin.save();
+      res.redirect("/api/login");
+    } else {
+      res.send("BOBUUUR");
+    }
   },
 
   async logout(req, res) {

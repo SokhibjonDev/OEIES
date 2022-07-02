@@ -1,4 +1,4 @@
-<form action="/api/register" method="post">
+<form action="/api/register" enctype="multipart/form-data" method="post">
     <br>
     <h2 class="login">Sign up</h2>
     <div class="format">
@@ -21,7 +21,7 @@
         <br>
         <button type="button" class="btn-grey">
             Add an Avatar <img width="20px" src="/images/picture.png" alt="">
-            <input class="avatar" type="file" accept="image/*" name="adminImg" id="adminImg">
+            <input class="avatar" type="file" accept="image/*" name="img" id="adminImg">
         </button>
     </div>
 
