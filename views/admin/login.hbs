@@ -1,4 +1,7 @@
 <form action="/api/login" method="post">
+{{#if error}}
+    <p class="error">{{error}}</p>
+    {{/if}}
     <br>
     <h2 class="login">Login</h2>
     <label for="username">Username</label>

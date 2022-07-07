@@ -1,4 +1,7 @@
 <form action="/api/register" enctype="multipart/form-data" method="post">
+{{#if error}}
+    <p class="error">{{error}}</p>
+    {{/if}}
     <br>
     <h2 class="login">Sign up</h2>
     <div class="format">
