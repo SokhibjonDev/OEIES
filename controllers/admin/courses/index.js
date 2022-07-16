@@ -1,5 +1,6 @@
 const Joi = require('joi')
 const Course = require('../../../models/courses')
+const Category = require('../../../models/category')
 
 module.exports = {
     async homeCourse(req, res) {
@@ -21,7 +22,8 @@ module.exports = {
         const course = new Course({
             name: req.body.name,
             price: req.body.price,
-            img: req.body.img
+            img: req.body.img,
+            catalogId: req.body.catalogId
         })
 
         await course.save()
@@ -30,10 +32,11 @@ module.exports = {
     },
 
     async getAddCourse(req, res) {
+        const category = await Category.find()
         res.render('admin/addCourse', {
             title: 'Add course',
             layout: '../admin/layouts/main',
-
+            category
         })
     },
 
@@ -73,7 +76,8 @@ function validateCourse(val) {
     const schema = Joi.object({
         name: Joi.string().required(),
         price: Joi.number().required(),
-        img: Joi.string()
+        img: Joi.string(),
+        catalogId: Joi.string().required()
     })
 
     const res = schema.validate(val)

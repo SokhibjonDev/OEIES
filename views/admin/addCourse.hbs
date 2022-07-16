@@ -7,6 +7,12 @@
         <br>
         <input type="text" id="img" name="img" placeholder="Course img">
         <br>
+        <select name="catalogId" id="">
+                {{#each category}}
+                <option value="{{_id}}">{{name}}</option>
+                {{/each}}
+        </select>
+        <br>
         <button class="btn" type="submit">Create</button>
         <br><br><br>
 
