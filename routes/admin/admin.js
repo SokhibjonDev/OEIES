@@ -6,6 +6,7 @@ const courses = require('./course')
 const users = require('./users')
 const settings = require('./settings')
 
+
 // Admin home page 
 router.get('/', admin.home)
 

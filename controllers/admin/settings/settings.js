@@ -11,10 +11,17 @@ module.exports = {
         })
     },
     async adminUpdate (req, res){
+        if(req.file){
+            req.body.adminImg = req.file.filename
+        }
         if(req.body.password){
             req.body.password = await bcrypt.hash(req.body.password, 10)
+        }else{
+            req.body.password = req.session.admin.password
         }
-        const admin = await Admin.findByIdAndUpdate(req.params.id,req.body)
+
+        await Admin.findByIdAndUpdate(req.params.id,req.body)
+        req.session.admin = await Admin.findById(req.params.id)
         res.redirect('/api')
     }
 }

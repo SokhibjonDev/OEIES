@@ -1,4 +1,4 @@
-const uri = 'mongodb+srv://Sohibjon:android106@cluster0.g2p1q.mongodb.net/online-edu'
+const uri = 'mongodb+srv://Bobur:2vhYyYBf659w6eCm@cluster0.jnpjw6n.mongodb.net/online-edu'
 const mongoose = require('mongoose')
 
 module.exports = async () => {
