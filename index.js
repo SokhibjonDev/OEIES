@@ -7,6 +7,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const flash = require('connect-flash')
 
+
 require("dotenv").config();
 const adminAuth = require("./routes/admin/auth");
 const adminRouter = require("./routes/admin/admin");
@@ -48,11 +49,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash())
+
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("tiny"));
 }
 // Routing
-
 app.use(userMiddleware);
 app.use("/api/", adminAuth);
 app.use("/api/", authMiddleware, adminRouter);

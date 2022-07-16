@@ -1,6 +1,7 @@
 <form action="/api/courses/update/{{courses.id}}" method="post">
     <br>
     <h1 style="text-align: center; color: #fff; text-transform: uppercase; letter-spacing: 2px;">{{courses.name}}</h1>
+    <p style="color: #fff;">{{error}}</p>
     <input type="text" name="name" value="{{courses.name}}">
     <br>
     <input type="number" name="price" value="{{courses.price}}">
