@@ -5,6 +5,9 @@ const courses = require('../../controllers/admin/courses/index')
 // Categories home page 
 router.get('/', courses.homeCourse)
 
+// Courses in catalog
+router.get('/catalog/:categoryid', courses.catalogCourses)
+
 // Add category form
 router.get('/add', courses.getAddCourse)
 

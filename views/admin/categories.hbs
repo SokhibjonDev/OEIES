@@ -4,10 +4,11 @@
 <div class="categories">
     {{#each categories}}
 
+    <a href="/api/courses/catalog/{{id}}">
     <div class="category">
         <h3 style="color: #fff;">{{name}}</h3>
         <img src="{{img}}" alt="{{img}}">
-    </div>
+    </div></a>
     {{/each}}
 </div>
 {{else}}

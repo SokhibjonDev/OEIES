@@ -12,6 +12,16 @@ module.exports = {
     });
   },
 
+  async catalogCourses(req, res) {
+    const courses = await Course.find({ catalogId: req.params.categoryid})
+
+    res.render('admin/courses', {
+      title: "Courses page",
+      layout: "../admin/layouts/main",
+      courses,
+    })
+  },
+
   async addCourse(req, res) {
     const error = validateCourse(req.body);
 
@@ -42,7 +52,7 @@ module.exports = {
 
   async delByIdCourse(req, res) {
     const courses = await Course.findByIdAndDelete(req.params.id);
-    res.redirect("/api/courses");
+    res.redirect(`/api/courses/catalog/${courses.catalogId}`);
   },
 
   async UpdateByIdCourse(req, res) {
